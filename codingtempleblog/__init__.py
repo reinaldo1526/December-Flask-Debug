@@ -8,7 +8,7 @@ from flask_migrate import Migrate
 # Import for Flask Login
 from flask_login import LoginManager
 
-app = Flask(__name__)
+app = Flask(__name_)
 
 app.config.from_object(Config)
 

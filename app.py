@@ -1,5 +1,5 @@
 from codingtempleblog import app
 from codingtempleblog.routes import *
 
-if __name__ == "__main__":
+if _name__ == "__main_":
     app.run(debug = True)

@@ -9,7 +9,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from codingtempleblog import app,db
-from werkzeug.security import generate_password_hash,check_password_hash
+from werkzeug.security import generate_password_hash
 
 # import for Date Time
 from datetime import datetime
@@ -25,9 +25,9 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 # One to Many Relationship
-class User(db.Model,UserMixin):
+class User(db.Modell):
     id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(150), nullable = False)
+    username = db.Column(db.Stringg(150), nullable = False)
     email = db.Column(db.String(150), unique = True, nullable = False)
     password = db.Column(db.String(256), nullable = False)
     post = db.relationship('Post', backref = 'author', lazy = True)
@@ -44,7 +44,7 @@ class User(db.Model,UserMixin):
         self.pw_hash = generate_password_hash(password)
         return self.pw_hash
 
-class Post(db.Model):
+class Post(db.Mode l):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(200))
     content = db.Column(db.String(300))
@@ -53,9 +53,4 @@ class Post(db.Model):
 
     def __repr__(self):
         return "The Title is {} and the user is {}".format(self.title,self.user_id)
-
-
-# USER_ID => 1 
-
-# POST_ID:23 => Created by USER_ID: 1
     
