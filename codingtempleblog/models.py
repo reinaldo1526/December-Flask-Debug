@@ -25,9 +25,9 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 # One to Many Relationship
-class User(db.Modell):
+class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.Stringg(150), nullable = False)
+    username = db.Column(db.String(150), nullable = False)
     email = db.Column(db.String(150), unique = True, nullable = False)
     password = db.Column(db.String(256), nullable = False)
     post = db.relationship('Post', backref = 'author', lazy = True)
@@ -41,10 +41,10 @@ class User(db.Modell):
         return '{} has been created'.format(self.username)
 
     def set_password(self,password):
-        self.pw_hash = generate_password_hash(password)
+        self.pw_hash = generate_password_hash(password, method = 'pbkdf2:sha256', salt_length=10)
         return self.pw_hash
 
-class Post(db.Mode l):
+class Post(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(200))
     content = db.Column(db.String(300))

@@ -103,7 +103,7 @@ a{
     top:10rem;
     color: white;
 }
-/* 
+
 .flash-messages{
     color: #FFFFFF;
     text-align: center;
@@ -114,7 +114,7 @@ a{
     -o-transition: opacity 3s ease-in-out;
      opacity: 1;
      background-color: #FFFFFF;
-} */
+} 
 
 
 /* Stripe CSS */

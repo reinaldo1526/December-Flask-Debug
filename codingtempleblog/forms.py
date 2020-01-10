@@ -1,5 +1,5 @@
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, EqualTo, Email
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, EqualTo, Email, length
 from flask_wtf import FlaskForm
 
 class SignUpForm(FlaskForm):
@@ -7,17 +7,17 @@ class SignUpForm(FlaskForm):
     email = StringField("Email", validators=[DataRequired(),Email()])
     password = PasswordField("Password", validators=[DataRequired()])
     confirm_pass = PasswordField("Confirm Password", validators=[DataRequired(),EqualTo('password')])
-    submit = SubmitField()
+    submit = SubmitField("Submit")
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(),Email()])
     password = PasswordField('Password',validators=[DataRequired()])
-    submit = SubmitField()
+    submit = SubmitField("Submit")
 
 class PostForm(FlaskForm):
     title = StringField('Title',validators=[DataRequired()])
-    content = StringField('Content',validators=[DataRequired()])
-    submit = SubmitField()
+    content = TextAreaField('Content',validators=[DataRequired()])
+    submit = SubmitField("Submit")
 
 class PaymentForm(FlaskForm):
     card = StringField('Card Number', validators=[DataRequired()])

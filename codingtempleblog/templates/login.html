@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{ % block content % }
+{% block content %}
 
 <div class="container">
     
@@ -8,17 +8,17 @@
     <div class="form-group">
         <form action="" method="POST">
             <fieldset>
-                {{login_form.email.label}}
-                {{login_form.email(class="form-control")}}
+                {{ loginform.email.label }}
+                {{ loginform.email(class="form-control") }}
             </fieldset>
             <fieldset>
-                {{login_form.password.label}}
-                {{login_form.password(class="form-control")}}
+                {{ loginform.password.label }}
+                {{ loginform.password(class="form-control") }}
             </fieldset>
-            {{ login_form.submit(class="btn btn-primary") }}
+            {{ loginform.submit(class="btn btn-primary") }}
         </form>
     </div>
 
 </div>
 
-{% endblock content % }
+{% endblock content %}
